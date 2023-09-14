@@ -81,7 +81,7 @@ export const ShoppingCartProvider = ({children}) => {
     localStorage.setItem('account',JSON.stringify({name,email,password}))
   }
   useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/products')
+    fetch('https://api.escuelajs.co/api/v1/products?limit=20&offset=0')
       .then(response => response.json())
       .then(data => setItems(data))
   }, [])
