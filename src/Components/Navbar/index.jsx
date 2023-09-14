@@ -78,9 +78,13 @@ const Navbar = () => {
         </li>
       </ul>
       <ul className='flex items-center gap-3'>
-        <li className='text-black/60'>
-          teff@platzi.com
-        </li>
+        {
+          context.auth &&
+            (<li className='text-black/60'>
+              {context.email}
+            </li>)
+          
+        }
         <li>
           <NavLink
             to='/my-orders'

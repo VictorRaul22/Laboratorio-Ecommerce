@@ -66,6 +66,7 @@ export const ShoppingCartProvider = ({children}) => {
     let account=JSON.parse(localStorage.getItem('account'));
     if(account.email==email && account.password==password){
       setAuth(true);
+      setAccount(account)
       localStorage.setItem('auth',JSON.stringify(true));
     }
 
