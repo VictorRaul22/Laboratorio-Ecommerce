@@ -35,6 +35,50 @@ export const ShoppingCartProvider = ({children}) => {
   // Get products by category
   const [searchByCategory, setSearchByCategory] = useState(null)
 
+  // auth
+  const [auth, setAuth] = useState(()=>{
+    if(localStorage.getItem('auth')){
+      return JSON.parse(localStorage.getItem('auth'))
+    }else{
+      localStorage.setItem('auth',false)
+      return false;
+    }
+  });
+
+  // account
+  const [account, setAccount] = useState(()=>{
+    if(localStorage.getItem('account')){
+      return JSON.parse(localStorage.getItem('account'))
+    }else{
+      localStorage.setItem('account',JSON.stringify({
+        name:'',
+        email:'',
+        password:''
+      }))
+      return {
+        name:'',
+        email:'',
+        password:''
+      };
+    }
+  }); 
+  const signIn=({email,password})=>{
+    let account=JSON.parse(localStorage.getItem('account'));
+    if(account.email==email && account.password==password){
+      setAuth(true);
+      localStorage.setItem('auth',JSON.stringify(true));
+    }
+
+  }
+  const signOut=()=>{
+    setAuth(false);
+    localStorage.removeItem('auth');
+    setAccount({})
+    localStorage.removeItem('account')
+  }
+  const signUp=({name,email,password})=>{
+    localStorage.setItem('account',JSON.stringify({name,email,password}))
+  }
   useEffect(() => {
     fetch('https://api.escuelajs.co/api/v1/products')
       .then(response => response.json())
@@ -96,7 +140,13 @@ export const ShoppingCartProvider = ({children}) => {
       setSearchByTitle,
       filteredItems,
       searchByCategory,
-      setSearchByCategory
+      setSearchByCategory,
+      auth,
+      account,
+      signIn,
+      signOut,
+      signUp
+
     }}>
       {children}
     </ShoppingCartContext.Provider>
