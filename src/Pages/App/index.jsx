@@ -21,7 +21,7 @@ const AppRoutes = () => {
     { path: '/electronics', element:context.auth? <Home />: <Navigate to="/sing-in" replace={true}/> },
     { path: '/furnitures', element:context.auth? <Home />: <Navigate to="/sing-in" replace={true}/> },
     { path: '/toys', element:context.auth? <Home />: <Navigate to="/sing-in" replace={true}/> },
-    { path: '/othes', element:context.auth? <Home />: <Navigate to="/sing-in" replace={true}/> },
+    { path: '/others', element:context.auth? <Home />: <Navigate to="/sing-in" replace={true}/> },
     { path: '/my-account', element:context.auth? <MyAccount />: <Navigate to="/sing-in" replace={true}/> },
     { path: '/my-order', element:context.auth? <MyOrder />: <Navigate to="/sing-in" replace={true}/> },
     { path: '/my-orders', element:context.auth? <MyOrders /> : <Navigate to="/sing-in" replace={true}/>},

@@ -6,8 +6,7 @@ import { ShoppingCartContext } from '../../Context'
 const Navbar = () => {
   const context = useContext(ShoppingCartContext)
   const activeStyle = 'underline underline-offset-4'
-
-  // console.log(context.auth);
+  // console.log();
   return (
     <nav className='flex flex-col md:flex-row  justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white'>
       <ul className='flex items-center gap-3'>
@@ -80,8 +79,8 @@ const Navbar = () => {
       <ul className='flex items-center gap-3'>
         {
           context.auth &&
-            (<li className='text-black/60'>
-              {context.email}
+            (<li className='text-black'>
+              {context.account.email}
             </li>)
           
         }

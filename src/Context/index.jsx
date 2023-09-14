@@ -1,3 +1,4 @@
+import { data } from 'autoprefixer'
 import { createContext, useState, useEffect } from 'react'
 
 export const ShoppingCartContext = createContext()
@@ -81,9 +82,11 @@ export const ShoppingCartProvider = ({children}) => {
     localStorage.setItem('account',JSON.stringify({name,email,password}))
   }
   useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/products?limit=20&offset=0')
+    fetch('https://api.escuelajs.co/api/v1/products')
       .then(response => response.json())
-      .then(data => setItems(data))
+      .then(data => {
+        setItems(data)
+      })
   }, [])
 
   const filteredItemsByTitle = (items, searchByTitle) => {
